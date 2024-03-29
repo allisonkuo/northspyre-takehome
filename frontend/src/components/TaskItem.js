@@ -63,7 +63,7 @@ const TaskItem = ({ task, onDataUpdate }) => {
     return (
         <div className="mb-2">
             <div className='row'>
-                <div className='col row border border-light bg-white rounded pt-3 gx-4' style={{ opacity: '80%' }}>
+                <div className='col row border border-light bg-white pt-3 gx-4' style={{ opacity: '80%' }}>
                     <div className='col-1'>
                         <input
                             className="form-check-input"
@@ -72,11 +72,11 @@ const TaskItem = ({ task, onDataUpdate }) => {
                             id="flexCheckDefault"
                             checked={completed}
                             onChange={handleCheckboxChange}
-                            style={{ border: '2px solid #a8dadc', width: '20px', height: '20px' }}
+                            style={{ border: '2px solid #e9edc9', width: '20px', height: '20px', marginLeft: '15px' }}
                         />
                     </div>
                     <div className='col-3'>
-                        <p className='fw-bolder' style={{ color: '#457b9d' }}>{task.title}</p>
+                        <p className='fw-bolder' style={{ color: '#344e41', marginLeft: '10px' }}>{task.title}</p>
                     </div>
                     <div className='col-6'>
                         <p>{task.description}</p>

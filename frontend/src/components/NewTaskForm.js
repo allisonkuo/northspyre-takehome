@@ -58,9 +58,9 @@ const NewTaskForm = ({ onDataUpdate }) => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <div className="row border border-white rounded pt-3 pb-2">
+                <div className="row pt-3 rounded pb-2" style={{ border: '1px solid #344e41' }}>
                     <div className="col-2">
-                        <p className='pt-2 fw-bolder' style={{ color: '#457b9d' }}>ADD TASK</p>
+                        <p className='pt-2 fw-bolder' style={{ color: '#344e41', marginLeft: '10px' }}>ADD TASK</p>
                     </div>
                     <div className="col">
                         <input
