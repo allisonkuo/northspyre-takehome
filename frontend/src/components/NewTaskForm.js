@@ -1,10 +1,11 @@
 import {useState} from "react";
 
-const NewTaskForm = ({onDataUpdate}) => {
+const NewTaskForm = ({onDataUpdate, sortType, sortByType}) => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     completed: false,
+    priority: "",
   });
 
   const handleChange = (e) => {
@@ -29,8 +30,6 @@ const NewTaskForm = ({onDataUpdate}) => {
         return;
       }
 
-      console.log(formData);
-
       const response = await fetch(`http://127.0.0.1:5000/tasks`, {
         method: "POST",
         headers: {
@@ -45,12 +44,14 @@ const NewTaskForm = ({onDataUpdate}) => {
 
       console.log("Todo created successfully");
       // reset the form so you can add in a new task
-      setFormData({title: "", description: ""});
+      setFormData({title: "", description: "", priority: ""});
 
       // update the data shown on the page
       fetch("http://127.0.0.1:5000/tasks")
         .then((response) => response.json())
         .then((data) => {
+          // sort tasks depending on current "order by" dropdown state
+          sortByType(data, sortType);
           onDataUpdate(data); // update state with fetched data
         })
         .catch((error) => {
@@ -107,7 +108,9 @@ const NewTaskForm = ({onDataUpdate}) => {
               value={formData.priority}
               onChange={handleChange}
             >
-              <option value="">Select Priority</option>
+              <option value="" disabled>
+                Select Priority
+              </option>
               <option value="high">High</option>
               <option value="medium">Medium</option>
               <option value="low">Low</option>

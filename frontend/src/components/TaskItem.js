@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const TaskItem = ({task, onDataUpdate}) => {
+const TaskItem = ({task, onDataUpdate, sortType, sortByType}) => {
   const [completed, setCompleted] = useState(task.completed);
 
   const handleCheckboxChange = async (e) => {
@@ -49,6 +49,7 @@ const TaskItem = ({task, onDataUpdate}) => {
       fetch("http://127.0.0.1:5000/tasks")
         .then((response) => response.json())
         .then((data) => {
+          sortByType(data, sortType);
           onDataUpdate(data);
         })
         .catch((error) => {
