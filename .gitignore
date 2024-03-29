@@ -1,0 +1,14 @@
+.vscode/
+.idea/
+.project
+.pydevproject
+*.swp
+*.swo
+
+.env
+.env.*
+
+backend/instance/
+
+frontend/package-lock.json
+frontend/node_modules
