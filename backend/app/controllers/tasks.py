@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from app import db
-from app.models import Task
+from app.models import Task, PriorityEnum
 
 tasks_bp = Blueprint('tasks', __name__)
 
@@ -9,16 +9,17 @@ tasks_bp = Blueprint('tasks', __name__)
 def handle_tasks():
     if request.method == 'GET':
         tasks = Task.query.all()
-        return jsonify([{'id': task.id, 'title': task.title, 'description': task.description, 'completed': task.completed} for task in tasks]), 200
+        return jsonify([{'id': task.id, 'title': task.title, 'description': task.description, 'completed': task.completed, 'priority': task.priority.value} for task in tasks]), 200
     elif request.method == 'POST':
-        # Assuming request data contains JSON with task information
+        # request data contains JSON with task information
         data = request.get_json()
         title = data.get('title')
         description = data.get('description')
         completed = data.get('completed')
+        priority = data.get('priority')
 
-        # Create a new task
-        new_task = Task(title=title, description=description, completed=completed)
+        # create a new task
+        new_task = Task(title=title, description=description, completed=completed, priority=PriorityEnum(priority))
 
         # Add the new task to the database session
         db.session.add(new_task)
