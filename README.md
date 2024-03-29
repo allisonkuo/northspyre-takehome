@@ -19,9 +19,10 @@ Launch the Flask server from the `backend/` directory:
 ```
 python run.py
 ```
+Keep this running in a terminal!
 
 ### Launching the UI
-Now it's time for the visuals! Make sure you some form of javascript package manager installed:
+Now it's time for the visuals! In a separte terminal, make sure you some form of javascript package manager installed:
 ```
 npm -v
 yarn --version
