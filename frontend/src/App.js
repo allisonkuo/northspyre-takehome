@@ -24,12 +24,12 @@ function App() {
   };
 
   return (
-    <div className='pb-5' style={{ height: '100%', backgroundColor: '#e9edc9' }}>
+    <div className='pb-5' style={{ height: '100vh', backgroundColor: '#e9edc9', overflow: 'auto' }}>
       <Header />
 
       <div className='container' style={{ width: '60%' }}>
 
-        <div className='row' style={{ height: '50vh', overflowY: 'auto' }}>
+        <div className='row' style={{ maxHeight: '50vh', overflowY: 'auto' }}>
           <TaskList tasks={tasks} onDataUpdate={handleDataUpdate} />
         </div>
 
