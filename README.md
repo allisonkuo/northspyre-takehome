@@ -42,8 +42,8 @@ npm start
 Et voila! You should now be able to see this very very basic application where you can maintain a To-do list by adding and deleting tasks, and marking them as complete. 
 
 ### Summary
-For this app, I decided to build off of the existing skeleton. I started by creating the necessary CRUD endpoints within the `tasks.py` controller and wrapping it in a Blueprint to keep it modular in case I had time to add in additional features that would require different APIs (e.g. an Auth Blueprint). 
+For this app, I decided to build off of the existing skeleton. I started by creating the necessary CRUD endpoints within the `tasks.py` controller, wrapping it in a Blueprint to keep it modular in case I had time to add in additional features that would require different APIs (e.g. an Auth Blueprint). 
 
 On the frontend side, I tried to break the UI down into smaller components for readability and flexibility. The main task list is populated through a `fetch` call to the API, and the data is re-fetched after update operations, and the UI responds accordingly. 
 
-I had many ideas on next feature enhancements (adding a priority status for each task, sort feature by said priority, editing existing tasks, to name a few), but truth be told I just ran out of time to implement them. I faced many hurdles in terms of just new laptop environment setup that cost me too much time, so in the end I decided to spend time to make the UI look relatively polished and fun-ish.
+I had many ideas on next feature enhancements (adding a priority status for each task, sort feature by said priority, editing existing tasks, to name a few), but truth be told I just ran out of time to implement them. I faced many hurdles in terms of just new laptop environment setup that cost me too much time, so in the end I decided to use what little remaining time I had left to make the UI look relatively polished and fun-ish.
