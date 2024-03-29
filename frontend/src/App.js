@@ -24,27 +24,21 @@ function App() {
   };
 
   return (
-    <html>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css2?family=Tac+One&display=swap" rel="stylesheet" />
+    <div className='pb-5' style={{ height: '100%', backgroundColor: '#e9edc9' }}>
+      <Header />
 
-      <div className='pb-5' style={{ height: '100%', backgroundColor: '#e9edc9' }}>
-        <Header />
+      <div className='container' style={{ width: '60%' }}>
 
-        <div className='container' style={{ width: '60%' }}>
-
-          <div className='row' style={{ height: '50vh', overflowY: 'auto' }}>
-            <TaskList tasks={tasks} onDataUpdate={handleDataUpdate} />
-          </div>
-
-          <div className='row mt-4'>
-            <NewTaskForm onDataUpdate={handleDataUpdate} />
-          </div>
-
+        <div className='row' style={{ height: '50vh', overflowY: 'auto' }}>
+          <TaskList tasks={tasks} onDataUpdate={handleDataUpdate} />
         </div>
-      </div >
-    </html>
 
+        <div className='row mt-4'>
+          <NewTaskForm onDataUpdate={handleDataUpdate} />
+        </div>
+
+      </div>
+    </div >
   );
 }
 
