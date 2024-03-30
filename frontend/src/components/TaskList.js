@@ -1,7 +1,5 @@
 import TaskItem from "./TaskItem";
 
-// add in super primitive sort button
-
 const TaskList = ({tasks, onDataUpdate, sortType, sortByType}) => {
   const handleChange = (e) => {
     const {name, value} = e.target;
