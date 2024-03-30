@@ -39,6 +39,7 @@ def app():
 
         db.session.remove()
         db.drop_all()
+        db.create_all() # create the Task table again. pretty sure this is not the right way to handle this...
 
 @pytest.fixture
 def client(app):
