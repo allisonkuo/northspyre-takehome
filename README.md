@@ -67,7 +67,7 @@ pip3 install pytest
 ```
 
 Export the path to your Flask app in `PYTHONPATH`:
-``
+```
 export PYTHONPATH=/path/to/northspyre0takehome/backend
 ```
 
@@ -78,7 +78,9 @@ pytest
 
 **Note:** Running the unit test will wipe the contents of the local DB, so if you go back to the UI, you will not see your tasks anymore. Ideally there would be some sort of separation or use of mocks to prevent this as it can be tedious during development to have to keep re-seeding the DB.
 
-### Summary
+***
+
+## Summary
 For this app, I decided to build off of the existing skeleton. I started by creating the necessary CRUD endpoints within the `tasks.py` controller, wrapping it in a Blueprint to keep it modular in case I had time to add in additional features that would require different APIs (e.g. an Auth Blueprint). There are some unit tests implemented for the Task model and Task API endpoints, namely for the happy path cases. It would be beneficial to add in more test cases for the unhappy paths if there were more time (+ add in frontend tests that are missing).
 
 On the frontend side, I tried to break the UI down into smaller components for readability and flexibility. The `useEffect` hook is used to make a `fetch` call to the API to populate a task list. The `useState` hook was used at the top level component to maintain the state of the tasks data, so when tasks are update (created, deleted, completed), the display list updates accordingly without a need for refresh. The available features for this task list include the following: 
