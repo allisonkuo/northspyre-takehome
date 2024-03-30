@@ -21,7 +21,7 @@ def handle_tasks():
         # create a new task
         new_task = Task(title=title, description=description, completed=completed, priority=PriorityEnum(priority))
 
-        # Add the new task to the database session
+        # add the new task to the database session
         db.session.add(new_task)
         db.session.commit()
 

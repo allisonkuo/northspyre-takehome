@@ -13,7 +13,6 @@ def create_app():
     CORS(app)
     db.init_app(app)
 
-
     migrate = Migrate(app, db)
 
     from app.controllers.tasks import tasks_bp
