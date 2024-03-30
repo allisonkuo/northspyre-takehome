@@ -41,9 +41,52 @@ npm start
 
 Et voila! You should now be able to see this very very basic application where you can maintain a To-do list by adding and deleting tasks, and marking them as complete. 
 
+### Additional Helpful Commands
+#### DB Migration
+If you need to create a new DB migration or update the DB to the latest migration, do the following:
+
+Install Flask-Migrate (should have been already installed w/ `requirements.txt`)
+```
+pip3 install Flask-Migrate
+```
+
+To create a new migration:
+```
+flask db migrate -m "Note about the migration"
+```
+
+To apply the migration:
+```
+flask db upgrade
+```
+
+#### Running Backend Unit Tests
+Make sure to have `pytest` installed (should have been already installed w/ `requirements.txt`);
+```
+pip3 install pytest
+```
+
+Export the path to your Flask app in `PYTHONPATH`:
+``
+export PYTHONPATH=/path/to/northspyre0takehome/backend
+```
+
+To run the unit test:
+```
+pytest
+```
+
+**Note:** Running the unit test will wipe the contents of the local DB, so if you go back to the UI, you will not see your tasks anymore. Ideally there would be some sort of separation or use of mocks to prevent this as it can be tedious during development to have to keep re-seeding the DB.
+
 ### Summary
-For this app, I decided to build off of the existing skeleton. I started by creating the necessary CRUD endpoints within the `tasks.py` controller, wrapping it in a Blueprint to keep it modular in case I had time to add in additional features that would require different APIs (e.g. an Auth Blueprint). 
+For this app, I decided to build off of the existing skeleton. I started by creating the necessary CRUD endpoints within the `tasks.py` controller, wrapping it in a Blueprint to keep it modular in case I had time to add in additional features that would require different APIs (e.g. an Auth Blueprint). There are some unit tests implemented for the Task model and Task API endpoints, namely for the happy path cases. It would be beneficial to add in more test cases for the unhappy paths if there were more time (+ add in frontend tests that are missing).
 
-On the frontend side, I tried to break the UI down into smaller components for readability and flexibility. The main task list is populated through a `fetch` call to the API, and the data is re-fetched after update operations, and the UI responds accordingly. 
+On the frontend side, I tried to break the UI down into smaller components for readability and flexibility. The `useEffect` hook is used to make a `fetch` call to the API to populate a task list. The `useState` hook was used at the top level component to maintain the state of the tasks data, so when tasks are update (created, deleted, completed), the display list updates accordingly without a need for refresh. The available features for this task list include the following: 
 
-I had many ideas on next feature enhancements (adding a priority status for each task, sort feature by said priority, editing existing tasks, to name a few), but truth be told I just ran out of time to implement them. I faced many hurdles in terms of just new laptop environment setup that cost me too much time, so in the end I decided to use what little remaining time I had left to make the UI look relatively polished and fun-ish.
+* All tasks displayed in a list, where you can view completion status (checkbox), task name, description, and priority.
+* A form at the end of the list to add a new tesk. The new task defaults to being incomplete, while the other fields are populated based on user input.
+* A delete button at the end of each list item to delete the corresponding task.
+* A dropdown above the list gives the user two options to choose how to sort the list: by "date created" (i.e. the order they were created) and "priority."
+  * If priority is selected, the list is sorted from high -> low priority.  
+
+I had more ideas on next feature enhancements (editing existing tasks, giving each task a category and having the option to group by category, tying tasks to a user, to name a few), but truth be told I just ran out of time to implement them. I faced many hurdles in terms of having to setup basic dev tools/environment on a new laptop which ultimately cost me a lot of time, so in the end I decided to use the remaining time I had to make the UI look relatively polished and fun-ish!
